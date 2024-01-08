@@ -43,17 +43,17 @@ function Header(props) {
 						</nav>
 					</div>
 					<Link to="/profile" className="header__profile"><p className="header__profile-text">Аккаунт</p><img src={profileButton} className="header__profile-icon" alt="иконка личного кабинета"></img></Link>
-					<button className="header__burger" onClick={handleOpenNavigation}></button>
+					<button type="button" className="header__burger" onClick={handleOpenNavigation}></button>
 					{isNavigationOpen && <Navigation onClose={handleCloseNavigation}/>}
 				</div>)
 				: (
-					<div className="header header__landing">
+					<div className="header header-landing">
 						<div className="header__info">
 							<Link to="/" className="header__logo"><img src={logo} alt="логотип" /></Link>
 						</div>
 						<nav className="header__nav-noauth">
 							<NavLink to="/signup" className="header__link">Регистрация</NavLink>
-							<Link to="/signin"><button className="header__button-signin">Войти</button></Link>
+							<Link to="/signin" className="header__button-signin">Войти</Link>
 						</nav>
 					</div>
 				)}

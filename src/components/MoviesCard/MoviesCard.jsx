@@ -17,8 +17,8 @@ function MoviesCard(props) {
 			<div className="card__info">
 				<h2 className="card__title">{props.card.title}</h2>
 				{pathname === "/saved-movies"
-				? <button className="card__button-close"></button>
-				: <button className={`card__button ${isLiked ? 'card__button-saved' : 'card__button-save'}`} onClick={handleLike}></button>}
+				? <button type="button" className="card__button-close"></button>
+				: <button type="button" className={`card__button ${isLiked ? 'card__button-saved' : 'card__button-save'}`} onClick={handleLike}></button>}
 			</div>
 			<p className="card__time">{props.card.duration}</p>
 		</li>

@@ -1,5 +1,6 @@
 import React from "react";
 import "./Profile.css";
+import { Link } from "react-router-dom";
 
 function Profile(props) {
 	const [isEdit, setIsEdit] = React.useState(false)
@@ -25,11 +26,11 @@ function Profile(props) {
 					{isEdit? <input className="profile__info-data" defaultValue="pochta@yandex.ru"></input> : <p className="profile__info-data">pochta@yandex.ru</p>}
 				</div>
 				{isEdit
-				? <button className="profile__button-save">Сохранить</button> 
+				? <button type="button" className="profile__button-save">Сохранить</button> 
 				: <nav>
 						<ul className="profile__buttons">
 							<li className="profile__button profile__button-edit" onClick={handleEdit}>Редактировать</li>
-							<li className="profile__button profile__button-exit">Выйти из аккаунта</li>
+							<Link to="/signin" className="profile__button"><li className="profile__button-exit">Выйти из аккаунта</li></Link>
 						</ul>
 					</nav>}
 			</form>

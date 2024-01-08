@@ -9,11 +9,6 @@ function Movies(props) {
 			<div className="movies__container">
 			<SearchForm />
 			<MoviesCardList cards={props.cards}/>
-			{/* <ul>
-				<MoviesCard />
-			</ul> */}
-			{/* <MoviesCard /> */}
-			{/* <Preloader /> */}
 			</div>
 		</div>
 	)

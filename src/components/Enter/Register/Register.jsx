@@ -14,15 +14,15 @@ function Register(){
 		>
 			<label className="enter__label">
 				Имя
-				<input className="enter__input" name="name" type="text"></input>
+				<input className="enter__input" required name="name" type="text" minLength="3" maxLength="32"></input>
 			</label>
 			<label className="enter__label">
 				E-mail
-				<input className="enter__input" name="email" type="email"></input>
+				<input className="enter__input" required name="email" type="email" minLength="3" maxLength="32"></input>
 			</label>
 			<label className="enter__label">
 				Пароль
-				<input className="enter__input" name="password" type="password"></input>
+				<input className="enter__input" required name="password" type="password" minLength="3" maxLength="32"></input>
 			</label>
 		</Enter>
 	)

@@ -1,5 +1,9 @@
 .me {
 	background-color: #202020;
+	width: 100%;
+}
+
+.me__container {
 	padding: 110px 70px 0;
 }
 
@@ -127,7 +131,7 @@
 	.me__info {
 		gap: 49px;
 	}
-	.me {
+	.me__container {
 		padding: 90px 50px 0
 	}
 	.me__name {
@@ -166,7 +170,7 @@
 }
 
 @media screen and (max-width: 600px) {
-	.me {
+	.me__container {
 		padding: 68px 14px 0;
 	}
 	.me__title {

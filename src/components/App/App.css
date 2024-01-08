@@ -9,5 +9,26 @@
 	/* margin: 0 auto; */
 	min-height: 100vh;
 	background-color: #202020;
-	/* max-width: 100vw; */
+	/* max-width: 1280px; */
+	margin: 0 auto;
+}
+
+.body {
+	background-color: #202020;
+}
+
+.main {
+	width: 100%;
+	max-width: 1280px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.main section {
+	max-width: 1140px;;
+	width: 100%;
+	align-self: center;
+	padding: 0 calc((100vw - 1280px) / 2 + 70px);
+	position: relative;
 }

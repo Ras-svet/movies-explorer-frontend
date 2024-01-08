@@ -7,7 +7,7 @@ import profileButton from "../../images/profileButton.svg"
 function Navigation(props) {
 	return (
 		<div className="navigation">
-			<button className="navigation__close-button" onClick={props.onClose}></button>
+			<button type="button" className="navigation__close-button" onClick={props.onClose}></button>
 			<nav className="navigation__container">
 				<ul className="navigation__links">
 					<li>
