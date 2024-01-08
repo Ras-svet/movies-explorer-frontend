@@ -1,0 +1,126 @@
+.card {
+	display: flex;
+	list-style: none;
+	flex-direction: column;
+	min-height: 230px;
+	max-width: 339px;
+}
+
+.card__image {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	object-fit: cover;
+	height: 151px;
+}
+
+.card__info {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	min-height: 46px;
+	/* padding-bottom: 25px; */
+	padding-top: 10px;
+	border-bottom: 1px solid #424242;
+}
+
+.card__title {
+	font-size: 13px;
+	line-height: 16px;
+	font-weight: 500;
+	color: #fff;
+	padding: 0;
+	margin: 0;
+	max-width: 226px;
+	padding-top: 4px;
+	/* align-self: center; */
+}
+
+.card__button {
+	height: 24px;
+	width: 24px;
+	background-color: #313131;
+	border-radius: 50%;
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+.card__button:hover {
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+.card__button-save {
+	background-image: url(../../images/button__save.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.card__button-saved {
+	background-image: url(../../images/button__saved.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.card__button-close {
+	height: 24px;
+	width: 24px;
+	border: none;
+	padding: 0;
+	margin: 0;
+	background-color: transparent;
+}
+
+.card__button-close:hover {
+	background: #313131 url(../../images/button__close.svg) center no-repeat;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.card__time {
+	font-size: 11px;
+	font-weight: 400;
+	color: #8B8B8B;
+	line-height: 13px;
+	padding: 0;
+	padding-top: 6px;
+	margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+	.card__image {
+		height: 190px;
+	}
+	.card__info {
+		padding: 10px 0 0px;
+		min-height: 50px;
+	}
+	.card__title {
+		max-width: 100%;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.card__title {
+		font-size: 12px;
+		padding-top: 5px;
+	}
+	.card__info {
+		padding: 10px 0 0;
+	}
+	.card__time {
+		font-size: 10px;
+	}
+	.card__image {
+		height: 168px;
+	}
+	.card__button-close {
+		background: #313131 url(../../images/button__close.svg) center no-repeat;
+		border-radius: 50%;
+	}
+	.card__button-close:hover {
+		cursor: pointer;
+		opacity: 0.8;
+	}
+}

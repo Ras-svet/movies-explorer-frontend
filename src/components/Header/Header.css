@@ -1,0 +1,147 @@
+.header {
+	width: 89.1%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	min-height: 74px;
+	position: relative;
+	padding: 0 calc(100vw * 0.109 /2)
+}
+
+.header__landing {
+	background-color: #073042;
+	position: relative;
+}
+
+.header__info {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 44px;
+}
+
+.header__links {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	list-style: none;
+	gap: 16px;
+	padding: 0;
+}
+
+.header__link {
+	font-weight: 400;
+	font-size: 13px;
+	text-decoration: none;
+	color: #fff;
+	line-height: 18px;
+	margin: 0;
+	padding: 0;
+}
+
+.header__link:hover {
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.header__link_active {
+	font-weight: 500;
+}
+
+.header__profile {
+	text-decoration: none;
+	color: #fff;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 7px;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 12px;
+	margin: 0;
+	padding: 0;
+}
+
+.header__profile:hover {
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.header__burger {
+	display: none;
+	background-image: url(../../images/burger.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	border: none;
+	max-width: 44px;
+	min-height: 44px;
+	background-color: transparent;
+	padding-right: 38px;
+}
+
+.header__burger:hover {
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.header__button-signin {
+	background-color: #3DDC84;
+	color: #000;
+	font-size: 12px;
+	line-height: 16px;
+	font-weight: 500;
+	padding: 8px 20px;
+	border: none;
+	border-radius: 3px;
+	margin: 0;
+	margin-left: 30px;
+}
+
+.header__button-signin:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+	.header__links {
+		display: none;
+	}
+	.header__profile {
+		display: none;
+	}
+	.header__burger {
+		display: block;
+	}
+}
+
+@media screen and (width: 768px) {
+	.header {
+		padding: 0 30px;
+		width: calc(768px - 60px)
+	}
+}
+
+@media screen and (width: 320px) {
+	.header {
+		padding: 0 14px;
+		width: calc(320px - 28px)
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.header__burger {
+		max-width: 40px;
+		min-height: 43px;
+		padding-right: 34px;
+	}
+	.header__link {
+		font-size: 10px;
+	}
+	.header__button-signin {
+		padding: 5px 12px;
+		font-size: 10px;
+		margin-left: 14px;
+	}
+}

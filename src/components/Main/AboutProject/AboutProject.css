@@ -1,0 +1,151 @@
+.project {
+	display: flex;
+	flex-direction: column;
+	align-self: flex-start;
+	justify-content: start;
+	background-color: #202020;
+	width: 100%;
+}
+
+.project__container {
+	padding: 110px 70px;
+}
+
+.project__title {
+	color: #fff;
+	font-size: 22px;
+	font-weight: 400;
+	line-height: 27px;
+	margin: 0;
+	padding: 0;
+	padding-bottom: 23px;
+	border-bottom: 1px solid #DADADA;
+	letter-spacing: -0.04em;
+}
+
+.project__info {
+	margin: 0;
+	padding: 0;
+	padding-top: 70px;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(min-content, 550px));;
+	grid-template-rows: 1fr 1fr;
+	gap: 9px 40px;
+	grid-auto-flow: column;
+}
+
+.project__info-title {
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: -0.04em;
+	color: #fff;
+}
+
+.project__info-text {
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 20px;
+	color: #fff;
+}
+
+.project__parts {
+	padding-top: 110px;
+	display: grid;
+	grid-template-columns: 228px 1fr;
+	grid-template-rows: 36px 17px;
+	gap: 14px 0;
+}
+
+.project__part {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	background-color: #303030;
+	text-align: center;
+	font-size: 14px;
+	line-height: 17px;
+	font-weight: 400;
+	margin: 0;
+	padding: 0;
+	color: #fff;
+}
+
+.project__part-green {
+	background-color: #3DDC84;
+	color: #000;
+}
+
+.project__part-text {
+	text-align: center;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	color: #8B8B8B;
+	font-size: 14px;
+	line-height: 17px;
+	font-weight: 500;
+}
+
+@media screen and (max-width: 777px) {
+	.project__container {
+		padding: 90px 50px 90px 50px;
+	}
+	.project__info {
+		gap: 8px 30px;
+		grid-template-columns: repeat(2, minmax(min-content, 319px));
+	}
+	.project__info-text {
+		font-size: 12px;
+	}
+	.project__parts {
+		padding-top: 90px;
+		grid-template-columns: 140px 1fr;
+	}
+	.project__title {
+		max-width: 668px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.project__container {
+		padding: 70px 18px 69px 18px;
+	}
+	.project__title {
+		padding-bottom: 28px;
+		font-size: 18px;
+	}
+	.project__info {
+		display: flex;
+		flex-direction: column;
+		padding-top: 57px;
+		gap: 0;
+	}
+	.project__info-title {
+		padding-bottom: 16px;
+		font-size: 18px;
+		line-height: 22px;
+	}
+	.project__info-text {
+		padding-bottom: 56px;
+		font-size: 11px;
+		line-height: 16px;
+	}
+	.project__parts {
+		padding-top: 4px;
+		grid-template-columns: 100px 1fr;
+		gap: 10px 0;
+		grid-template-rows: 35px 14px;
+	}
+	.project__part {
+		font-size: 11px;
+	}
+	.project__part-text {
+		font-size: 11px;
+	}
+}

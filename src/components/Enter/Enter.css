@@ -1,0 +1,170 @@
+.enter {
+	max-width: 396px;
+	min-height: 560px;
+	width: 100%;
+	padding: calc((100vh - 560px) / 2) 30px;
+}
+
+.enter__logo {
+	max-width: 38px;
+	min-height: 38px;
+	margin: 0;
+	padding: 0;
+}
+
+.enter__logo:hover {
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+.enter__title {
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 29px;
+	margin: 40px 0;
+	padding: 0;
+	align-self: start;
+	color: #fff;
+}
+
+.enter__form {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.enter__form label {
+	display: flex;
+	flex-direction: column;
+}
+
+.enter__label {
+	min-height: 12px;
+	padding: 0;
+	color: #8B8B8B;
+	font-weight: 400;
+	font-size: 10px;
+	line-height: 12px;
+	margin-top: 25px;
+}
+
+.enter__label:first-of-type {
+	margin-top: 0;
+}
+
+.enter__input {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 17px;
+	background-color: #202020;
+	color: #FFFFFF;
+	padding: 5px 0 10px;
+	margin: 0;
+	border: 0;
+	border-bottom: solid 1px #424242;
+}
+
+.enter__input:focus {
+	border-bottom: solid 1px #4285F4;
+	outline: none;
+}
+
+.enter__input-error {
+	color: #EE3465;
+}
+
+.enter__error {
+	min-height: 12px;
+	margin: 6px 0;
+	padding: 0;
+	color: #EE3465;
+	font-weight: 400;
+	font-size: 10px;
+	line-height: 12px;
+}
+
+.enter__button {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 17px;
+	color: #FFFFFF;
+	margin-bottom: 16px;
+	padding: 0;
+	width: 100%;
+	min-height: 45px;
+	background: #4285F4;
+	border: 0;
+	border-radius: 3px;
+	margin-top: 152px;
+}
+
+.enter__button-login {
+	margin-top: 221px;
+}
+
+.enter__button:hover {
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+.enter__button_disable {
+	background-color: #F8F8F8;
+	color: #C2C2C2;
+}
+
+.enter__button_disable:hover {
+	cursor: default;
+	opacity: none;
+}
+
+.enter__link-text {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 17px;
+	color: #8B8B8B;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+.enter__link {
+	color: #4285F4;
+	text-decoration: none;
+	padding: 0;
+}
+
+.enter__link:hover {
+  cursor: pointer;
+  opacity: .7;
+}
+
+@media screen and (max-width:450px) {
+	.enter {
+		display: flex;
+		flex-direction: column;
+		padding: 56px 30px 30px 30px;
+		max-width: 260px;
+	}
+	.enter__logo {
+		align-self: center;
+	}
+	.enter__title {
+		align-self: center;
+		margin-top: 46px;
+		margin-bottom: 80px;
+	}
+	.enter__button {
+		margin-top: 239px;
+		font-size: 12px;
+		line-height: 15px;
+		margin-bottom: 12px;
+	}
+	.enter__button-login {
+		margin-top: 309px;
+		font-size: 12px;
+		line-height: 15px;
+	}
+	.enter__link-text {
+		font-size: 12px;
+	}
+}
