@@ -20,7 +20,7 @@ function Header(props) {
 	return (
 		<>
 			{props.isLoggedIn ? (
-			<div className="header">
+			<header className="header">
 				<div className="header__info">
 					<Link to="/" className="header__logo"><img src={logo} alt="логотип" /></Link>
 						<nav>
@@ -45,9 +45,9 @@ function Header(props) {
 					<Link to="/profile" className="header__profile"><p className="header__profile-text">Аккаунт</p><img src={profileButton} className="header__profile-icon" alt="иконка личного кабинета"></img></Link>
 					<button type="button" className="header__burger" onClick={handleOpenNavigation}></button>
 					{isNavigationOpen && <Navigation onClose={handleCloseNavigation}/>}
-				</div>)
+				</header>)
 				: (
-					<div className="header header-landing">
+					<header className="header header-landing">
 						<div className="header__info">
 							<Link to="/" className="header__logo"><img src={logo} alt="логотип" /></Link>
 						</div>
@@ -55,7 +55,7 @@ function Header(props) {
 							<NavLink to="/signup" className="header__link">Регистрация</NavLink>
 							<Link to="/signin" className="header__button-signin">Войти</Link>
 						</nav>
-					</div>
+					</header>
 				)}
 		</>
 		

@@ -126,7 +126,7 @@
 		margin-top: 96px;
 	}
 	.profile__buttons {
-		margin-top: 210px;
+		margin-top: 197px;
 	}
 }
 
@@ -139,9 +139,12 @@
 		margin-top: 80px;
 	}
 	.profile__buttons {
-		margin-top: 379px;
+		margin-top: 363px;
 	}
 	.profile__button-save {
 		margin-top: 383px;
+	}
+	.profile__button {
+		font-size: 12px;
 	}
 }

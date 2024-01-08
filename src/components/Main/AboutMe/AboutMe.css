@@ -4,7 +4,7 @@
 }
 
 .me__container {
-	padding: 110px 70px 0;
+	padding: 110px 0 0;
 }
 
 .me__title {
@@ -132,7 +132,7 @@
 		gap: 49px;
 	}
 	.me__container {
-		padding: 90px 50px 0
+		padding: 90px 10px 0
 	}
 	.me__name {
 		font-size: 40px;
@@ -171,7 +171,7 @@
 
 @media screen and (max-width: 600px) {
 	.me__container {
-		padding: 68px 14px 0;
+		padding: 68px 0 0;
 	}
 	.me__title {
 		font-size: 18px

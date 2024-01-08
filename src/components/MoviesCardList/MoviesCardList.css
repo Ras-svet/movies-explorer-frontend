@@ -68,6 +68,9 @@
 		grid-template-columns: repeat(auto-fit, minmax(min-content, 290px));
 		gap: 30px
 	}
+	.cards__container-saved {
+		justify-content: center;
+	}
 }
 
 @media screen and (max-width: 675px) {
@@ -76,6 +79,9 @@
 		gap: 32px;
 		padding-top: 50px;
 		min-height: 676px;
+	}
+	.cards__container-saved {
+		justify-content: center;
 	}
 	.cards__more {
 		max-width: 240px;

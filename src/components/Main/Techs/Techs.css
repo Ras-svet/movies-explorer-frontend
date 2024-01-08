@@ -8,7 +8,7 @@
 }
 
 .techs__container {
-	padding: 100px 70px 100px;
+	padding: 100px 0 100px;
 	display: flex;
 	flex-direction: column;
 }
@@ -79,7 +79,7 @@
 
 @media screen and (max-width:768px) {
 	.techs__container {
-		padding: 90px 50px;
+		padding: 90px 10px;
 	}
 	.techs__subtitle {
 		padding-top: 80px;
@@ -105,7 +105,7 @@
 		background-color: #202020;
 	}
 	.techs__container {
-		padding: 70px 18px;
+		padding: 70px 0;
 	}
 	.techs__title {
 		padding-bottom: 28px;

@@ -1,12 +1,12 @@
 .header {
-	width: 89.1%;
+	/* width: 89.1%; */
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
 	min-height: 74px;
 	position: relative;
-	padding: 0 calc(100vw * 0.109 /2);
+	/* padding: 0 calc(100vw * 0.109 /2); */
 	/* padding: 0 calc(100vw * 0.891 /2 + 70px) */
 }
 

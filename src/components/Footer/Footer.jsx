@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
 	return(
-		<div className="footer">
+		<footer className="footer">
 			<div className="footer__container">
 				<p className="footer__phrase">Учебный проект Яндекс.Практикум х BeatFilm.</p>
 				<div className="footer__info">
@@ -14,7 +14,7 @@ function Footer() {
 					</div>
 				</div>
 			</div>
-		</div>
+		</footer>
 	)
 }
 

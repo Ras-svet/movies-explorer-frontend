@@ -19,55 +19,55 @@ function App(){
 			<div className="page">
 				<Routes>
 					<Route exact path="/signin" element={
-						<div className="main">
+						<main className="main">
 							<Login />
-						</div>
+						</main>
 					} />
 					<Route exact path="/signup" element={
-						<div className="main">
+						<main className="main">
 							<Register />
-						</div>
+						</main>
 					} />
 					<Route exact path="/profile" element={
 						<>
 							<Header isLoggedIn={true}/>
-							<div className="main">
+							<main className="main">
 								<Profile />
-							</div>
+							</main>
 						</>
 					} />
 					<Route exact path="/movies" element={
 						<>
 							<Header isLoggedIn={true} />
-							<div className="main">
+							<main className="main">
 								<Movies cards={cards}/>
-							</div>
+							</main>
 							<Footer />
 						</>
 					} />
 					<Route exact path="/saved-movies" element={
 						<>
 							<Header isLoggedIn={true} />
-							<div className="main">
+							<main className="main">
 								<Movies cards={savedCards} />
-							</div>
+							</main>
 							<Footer />
 						</>
 					}/>
 					<Route exact path="/" element={
 						<>
 							<Header isLoggedIn={false} />
-							<div className="main">
+							<main className="main">
 								<Main />
-							</div>
+							</main>
 							<Footer />
 						</>
 					} />
 
 					<Route path="*" element={
-						<div className="main">
+						<main className="main">
 							<NotFound />
-						</div>
+						</main>
 					} />
 				</Routes>
 			</div>
