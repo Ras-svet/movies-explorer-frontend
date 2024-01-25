@@ -1,0 +1,126 @@
+.search {
+	padding-top: 70px;
+	width: 100%;
+	padding-bottom: 69px;
+	border-bottom: 1px solid #424242;
+}
+
+.search__form {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	background-color: #2F2F2F;
+	border-radius: 9px;
+	min-height: 72px;
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+.search__input-area {
+	width: 100%;
+	padding-right: 30px;
+	display: flex;
+	margin: 16px 0 16px;
+	border-right: 1px solid #424242;
+}
+
+.search__input {
+	flex-grow: 1;
+	background-color: #2F2F2F;
+	padding: 0;
+	margin: 0;
+	border: none;
+	padding-left: 10px;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 21px;
+	color: #FFF;
+}
+
+.search__input:focus {
+	outline: none;
+	border: 1px solid #fff;
+	border-radius: 9px;
+}
+
+.search__input-icon {
+	padding-left: 19px;
+}
+
+.search__input-button {
+	border-radius: 48px;
+	border: none;
+	margin: 3px 0 3px;
+	background-color: #4285F4;
+	color: #fff;
+	padding: 8px 10.35px;
+	font-size: 11px;
+	line-height: 18px;
+	font-weight: 500;
+}
+
+.search__input-button:hover {
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+	.search {
+		padding: 80px 0 109px;
+	}
+	.search__input-area {
+		padding-right: 19px;
+	}
+	.search__input {
+		padding-left: 6px;
+	}
+}
+
+@media screen and (max-width: 620px) {
+	.search {
+		padding: 80px 0 44px;
+	}
+	.search__form {
+		display: flex;
+		flex-direction: column;
+	}
+	.search__input-icon {
+		display: none;
+	}
+	.search__input {
+		border-radius: 9px;
+		padding-left: 19px;
+	}
+	.search__input-area {
+		padding-left: 0;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		background-color: #2F2F2F;
+		border-radius: 9px;
+		min-height: 72px;
+		border: none;
+		padding: 0;
+		margin: 0;
+	}
+	.search__input-button {
+		margin: 19px 19px 19px 0;
+	}
+	.search__form {
+		background-color: transparent;
+	}
+}
+
+@media screen and (max-width: 375px) {
+	.search__input-area {
+		max-width: 300px;
+		align-self: center;
+	}
+	.search__input {
+		max-width: 222.35px;
+		width: 100%;
+		font-size: 14px;
+		line-height: 20px;
+	}
+}
