@@ -16,6 +16,7 @@ import api from "../../utils/MoviesApi";
 import PopupConfirm from "../PopupConfirm/PopupConfirm";
 import goodAnswer from '../../images/AllRight.svg'
 import badAnswer from '../../images/OhBad.svg'
+import UnProtectedRoute from "../UnProtectedRoute";
 
 function App(){
 	const navigate = useNavigate();
@@ -137,12 +138,18 @@ function App(){
 						<Routes>
 							<Route exact path="/signin" element={
 								<main className="main">
-									<Login onSubmit={signIn} />
+									<UnProtectedRoute
+									component={Login}
+									isLoggedIn={isLoggedIn}
+									onSubmit={signIn} />
 								</main>
 							} />
 							<Route exact path="/signup" element={
 								<main className="main">
-									<Register onSubmit={signUp} />
+									<UnProtectedRoute
+									component={Register}
+									isLoggedIn={isLoggedIn}
+									onSubmit={signUp} />
 								</main>
 							} />
 							<Route exact path="/profile" element={
