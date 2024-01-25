@@ -10,7 +10,8 @@ function Profile(props) {
 	const [email, setEmail] = React.useState('');
 	const [name, setName] = React.useState('');
 	const [isActive, setIsActive] = React.useState(false);
-	const [error, setError] = React.useState('')
+	const [error, setError] = React.useState('');
+	const [isSucces, setIsSucces] = React.useState(false)
 	// console.log(currentUser, currentUser.name)
 
 	function handleEdit() {
@@ -29,6 +30,7 @@ function Profile(props) {
 		mainApi.updateUserInfo(name, email)
 		.then((user) => {
 			setError('')
+			setIsSucces(true)
 			props.setCurrentUser({
 				_id: user._id,
 				name: user.name,
@@ -99,11 +101,12 @@ function Profile(props) {
 				</div>
 				{isEdit
 				? <>
-						<span className="profile__error">{error}</span>
+						<span className="profile__error">{isSucces ? 'Данные успешно изменены' : error}</span>
 						<button type="button" className={`profile__button-save ${isActive ? '' : 'profile__button-save_disable'}`} onClick={handleSudmit}>Сохранить</button> 
 					</>
 				: <nav>
 						<ul className="profile__buttons">
+							<span className="profile__allgood">{isSucces ? 'Данные успешно изменены' : ''}</span>
 							<li className="profile__button profile__button-edit" onClick={handleEdit}>Редактировать</li>
 							<li className="profile__button profile__button-exit" onClick={props.logOut}>Выйти из аккаунта</li>
 						</ul>

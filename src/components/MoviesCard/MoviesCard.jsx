@@ -26,7 +26,7 @@ function MoviesCard(props) {
 
 	return (
 		<li className="card">
-			<img src={props.card.image.url ? `https://api.nomoreparties.co/${props.card.image.url}` : `${props.card.image}`} className="card__image" alt="обложка" />
+			<a href={props.card.trailerLink}><img src={props.card.image.url ? `https://api.nomoreparties.co/${props.card.image.url}` : `${props.card.image}`} className="card__image" alt="обложка" /></a>
 			<div className="card__info">
 				<h2 className="card__title">{props.card.nameRU}</h2>
 				{pathname === "/saved-movies"

@@ -3,10 +3,10 @@ import "./Movies.css"
 import { useLocation } from "react-router";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import { desctopCount, desctopPlus, mobileCount, mobulePlus, tabletCount, tabletPlus } from "../../utils/constants";
+import { DESCTOP_COUNT, DESCTOP_PLUS, SMALL_DESCTOP_COUNT, SMALL_DESCTOP_PLUS, TABLET_COUNT, TABLET_PLUS, MOBILE_COUNT, MOBILE_PLUS, SMALL_DESCTOP_SIZE, TABLET_SIZE, MOBILE_SIZE, SHORT_FILM } from "../../utils/constants";
 
 function Movies(props) {
-	const [cardsCount, setCardsCount] = React.useState(0)
+	const [cardsCount, setCardsCount] = React.useState()
 	const [isPreloading, setIsPreloading] = React.useState(false)
 	const [isSearching, setIsSearching] = React.useState(false)
 	const [filteredCards, setFilteredCards] = React.useState(props.cards)
@@ -14,23 +14,27 @@ function Movies(props) {
 
 	function handleResize() {
 		const windowWidth = window.innerWidth;
-		if (windowWidth <= 650) {
-			setCardsCount(mobileCount)
-		} else if (windowWidth <= 909) {
-			setCardsCount(tabletCount)
+		if (windowWidth <= MOBILE_SIZE) {
+			setCardsCount(MOBILE_COUNT)
+		} else if (windowWidth <= TABLET_SIZE) {
+			setCardsCount(TABLET_COUNT)
+		} else if (windowWidth < SMALL_DESCTOP_SIZE) {
+			setCardsCount(SMALL_DESCTOP_COUNT)
 		} else {
-			setCardsCount(desctopCount)
+			setCardsCount(DESCTOP_COUNT)
 		}
 	}
 
 	function addMore() {
 		const windowWidth = window.innerWidth;
-		if (windowWidth <= 650) {
-			setCardsCount(prev => prev + mobulePlus)
-		} else if (windowWidth <= 909) {
-			setCardsCount(prev => prev + tabletPlus)
+		if (windowWidth <= MOBILE_SIZE) {
+			setCardsCount(prev => prev + MOBILE_PLUS)
+		} else if (windowWidth <= TABLET_SIZE) {
+			setCardsCount(prev => prev + TABLET_PLUS)
+		} else if (windowWidth < SMALL_DESCTOP_SIZE) {
+				setCardsCount(prev => prev + SMALL_DESCTOP_PLUS)
 		} else {
-			setCardsCount(prev => prev + desctopPlus)
+			setCardsCount(prev => prev + DESCTOP_PLUS)
 		}
 	}
 
@@ -60,13 +64,14 @@ function Movies(props) {
 		}
 		setIsSearching(true)
 		setIsPreloading(false)
+		handleResize()
 	}
 
 	function handleSearchByWord(movies, word) {
 		let newFilteredCards = []
 		if (word) {
 			newFilteredCards = movies.filter((element) => {
-				return element.nameRU.startsWith(word)
+				return element.nameRU.toLowerCase().startsWith(word.toLowerCase())
 			})
 		}
 		setFilteredCards(newFilteredCards?.length > 0 ? newFilteredCards : '')
@@ -83,7 +88,7 @@ function Movies(props) {
 		if (isSearchShort && movies?.length > 0) {
 			newFilteredCards = movies
 			.filter((element) => {
-				return element.duration <= 40
+				return element.duration <= SHORT_FILM
 			})
 		}
 		setFilteredCards(newFilteredCards?.length > 0 ? newFilteredCards : [])
@@ -103,7 +108,8 @@ function Movies(props) {
 
 	React.useEffect(() => {
 		handleResize()
-	}, [])
+		addMore()
+	}, [window.innerWidth])
 
 	React.useEffect(() => {
 		window.addEventListener('resize', handleResize);
@@ -124,7 +130,7 @@ function Movies(props) {
 		<div className="movies">
 			<div className="movies__container">
 			<SearchForm handleSearch={handleSearch} />
-			<MoviesCardList cards={pathname === '/saved-movies' ? savedCards : cards} isSearching={isSearching} isPreloading={isPreloading} allCards={filteredCards?.length > 0 ? filteredCards : props.cards} add={props.add} delete={props.delete} savedFilms={props.savedFilms} addMore={addMore} />
+			<MoviesCardList cards={pathname === '/saved-movies' ? savedCards : cards} isSearching={isSearching} isPreloading={isPreloading} allCards={pathname === "/saved-cards" ? JSON.parse(localStorage.getItem('savedCards'))?.length : JSON.parse(localStorage.getItem('cards'))?.length} add={props.add} delete={props.delete} savedFilms={props.savedFilms} addMore={addMore} />
 			</div>
 		</div>
 	)

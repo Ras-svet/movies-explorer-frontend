@@ -58,12 +58,12 @@ function Login(props){
 		>
 			<label className="enter__label">
 				E-mail
-				<input className={`enter__input ${emailError ? 'enter__input-error' : ''}`} placeholder="Почта" name="email" type="email" required minLength="3" maxLength="32" onChange={handleChangeEmail}></input>
+				<input className={`enter__input ${emailError ? 'enter__input-error' : ''}`} placeholder="Почта" name="email" type="email" required minLength="3" maxLength="32" onInput={handleChangeEmail}></input>
 			</label>
 			<span className="enter__error">{emailError}</span>
 			<label className="enter__label">
 				Пароль
-				<input className={`enter__input ${passwordError !== '' ? 'enter__input-error' : ''}`} placeholder="Пароль" name="password" type="password" required minLength="3" maxLength="32" onChange={handleChangePassword}></input>
+				<input className={`enter__input ${passwordError !== '' ? 'enter__input-error' : ''}`} placeholder="Пароль" name="password" type="password" required minLength="3" maxLength="32" onInput={handleChangePassword}></input>
 			</label>
 			<span className="enter__error">{passwordError}</span>
 		</Enter>

@@ -29,7 +29,7 @@ function App(){
 	const [allFilms, setAllFilms] = React.useState([]);
 	const [isPopupOpen, setIsPopupOpen] = React.useState(false);
 	const [titleStatusPopup, setTitleStatusPopup] = React.useState('');
-	const [imageStatusPopup, setImageStatusPopup] = React.useState(null)
+	const [imageStatusPopup, setImageStatusPopup] = React.useState(null);
 
 	function signUp(name, email, password) {
 		mainApi.signUp(name, email, password)
@@ -154,6 +154,7 @@ function App(){
 											logOut={logOut}
 											setCurrentUser={setCurrentUser}
 											isLoggedIn={isLoggedIn}
+											close={closePopup}
 										/>
 									</main>
 								</>

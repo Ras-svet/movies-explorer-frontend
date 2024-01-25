@@ -5,8 +5,10 @@ import logo from "../../images/logo.svg";
 import profileButton from "../../images/profileButton.svg"
 import "./Header.css"
 import Navigation from "../Navigation/Navigation";
+import { useLocation } from "react-router-dom";
 
 function Header(props) {
+	const {pathname} = useLocation()
 	const [isNavigationOpen, setIsNavigationOpen] = React.useState(false)
 
 	function handleOpenNavigation() {
@@ -28,14 +30,14 @@ function Header(props) {
 								<li>
 									<NavLink
 										to="/movies"
-										className="header__link header__link_active">
+										className={`header__link ${pathname === '/movies' ? 'header__link_active' : ''}`}>
 										Фильмы
 									</NavLink>
 								</li>
 								<li>
 									<NavLink
 										to="/saved-movies"
-										className="header__link">
+										className={`header__link ${pathname === '/saved-movies' ? 'header__link_active' : ''}`}>
 										Сохранённые фильмы
 									</NavLink>
 								</li>

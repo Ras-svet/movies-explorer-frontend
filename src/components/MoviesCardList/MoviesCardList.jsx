@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 function MoviesCardList(props) {
 	const {pathname} = useLocation()
 	const [isEmpty, setIsEmpty] = React.useState(true)
+	console.log(props.cards, props.allCards)
 
 	React.useEffect(() => {
 		if (pathname === "/saved-movies") {
@@ -38,7 +39,7 @@ function MoviesCardList(props) {
 			{props.isPreloading
 			? <Preloader />
 			: ''}
-			{props.cards?.length > 0 && props.cards?.length !== props.allCards.length ? <button type="button" className="cards__more" onClick={props.addMore}>Ещё</button> : ''}
+			{pathname !== "/saved-movies" && props.cards?.length > 0 && props.cards?.length !== props.allCards ? <button type="button" className="cards__more" onClick={props.addMore}>Ещё</button> : ''}
 		</div>
 	)
 }
