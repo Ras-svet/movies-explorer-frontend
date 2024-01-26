@@ -1,16 +1,25 @@
 import React from "react";
 import "./Movies.css"
+import api from "../../utils/MoviesApi";
 import { useLocation } from "react-router";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import { DESCTOP_COUNT, DESCTOP_PLUS, SMALL_DESCTOP_COUNT, SMALL_DESCTOP_PLUS, TABLET_COUNT, TABLET_PLUS, MOBILE_COUNT, MOBILE_PLUS, SMALL_DESCTOP_SIZE, TABLET_SIZE, MOBILE_SIZE, SHORT_FILM } from "../../utils/constants";
+import mainApi from "../../utils/MainApi";
 
 function Movies(props) {
 	const [cardsCount, setCardsCount] = React.useState()
 	const [isPreloading, setIsPreloading] = React.useState(false)
 	const [isSearching, setIsSearching] = React.useState(false)
+	const [allCards, setAllCards] = React.useState([])
 	const [filteredCards, setFilteredCards] = React.useState(props.cards)
+	const [allSavedCards, setAllSavedCards] = React.useState(props.cards)
 	const {pathname} = useLocation()
+
+	React.useEffect(() => {
+		window.addEventListener('resize', handleResize);
+		handleResize()
+	}, [])
 
 	function handleResize() {
 		const windowWidth = window.innerWidth;
@@ -39,30 +48,47 @@ function Movies(props) {
 	}
 
 	function handleSearch(word, isSearchShort) {
-		setIsPreloading(true)
-		let cardsToFilter = filteredCards
-		if (filteredCards.length <= 0) {
-			cardsToFilter = props.cards
+		if (pathname === "/movies" && allCards.length === 0) {
+			setIsSearching(true)
+			setIsPreloading(true)
+			api.getAllMovies()
+			.then((movies) => {
+				setAllCards(movies)
+				handleSearchAll(movies, word, isSearchShort)
+			})
+			.catch((err) => {
+				if (err.message === "Необходима авторизация") {
+					props.logOut()
+				}
+			})
+		} else if (pathname === "/movies" && allCards.length !== 0) {
+			setIsSearching(true)
+			handleSearchAll(allCards, word, isSearchShort)
+		} else if (pathname === "/saved-movies") {
+			setIsSearching(true)
+			handleSearchAll(props.cards, word, isSearchShort)
 		}
+	}
+
+	function handleSearchAll(movies, word, isSearchShort) {
 		if (word) {
-			const filteredByWord = handleSearchByWord(cardsToFilter, word)
+			const filteredByWord = handleSearchByWord(movies, word)
 			if (!isSearchShort && isSearchShort !== undefined) {
-					handleSearchByShort(filteredByWord, !isSearchShort)
+				handleSearchByShort(filteredByWord, !isSearchShort)
 			} else {
-				handleSearchByWord(props.cards, word)
+				handleSearchByWord(movies, word)
 			}
 		} else if (!isSearchShort && isSearchShort!== undefined) {
-			handleSearchByShort(props.cards, !isSearchShort)
-		}
-		else {
-			setFilteredCards([])
-			if (pathname === '/saved-movies') {
-				localStorage.setItem('savedCards', JSON.stringify(props.cards))
-			} else {
-				localStorage.setItem('cards', JSON.stringify(props.cards))
+			handleSearchByShort(movies, !isSearchShort)
+		} else {
+				setFilteredCards([])
+				if (pathname === '/saved-movies') {
+					setIsSearching(false)
+					localStorage.setItem('savedCards', JSON.stringify([]))
+				} else {
+					localStorage.setItem('cards', JSON.stringify(movies))
+				}
 			}
-		}
-		setIsSearching(true)
 		setIsPreloading(false)
 		handleResize()
 	}
@@ -71,7 +97,7 @@ function Movies(props) {
 		let newFilteredCards = []
 		if (word) {
 			newFilteredCards = movies.filter((element) => {
-				return element.nameRU.toLowerCase().startsWith(word.toLowerCase())
+				return element.nameRU.toLowerCase().includes(word.toLowerCase())
 			})
 		}
 		setFilteredCards(newFilteredCards?.length > 0 ? newFilteredCards : '')
@@ -102,18 +128,15 @@ function Movies(props) {
 
 	const cards = JSON.parse(localStorage.getItem('cards'))?.slice(0, cardsCount)
 
+	// const savedCards = localStorage.getItem('savedCards') !== null && JSON.parse(localStorage.getItem('savedCards')).length > 0
+	// ? isSearching
+	// 	? JSON.parse(localStorage.getItem('savedCards'))
+	// 	: props.cards
+	// : props.cards
+
 	const savedCards = isSearching
-	? JSON.parse(localStorage.getItem('savedCards'))?.slice(0, cardsCount)
-	: props.cards.slice(0, cardsCount)
-
-	React.useEffect(() => {
-		handleResize()
-		addMore()
-	}, [window.innerWidth])
-
-	React.useEffect(() => {
-		window.addEventListener('resize', handleResize);
-	}, [])
+	? JSON.parse(localStorage.getItem('savedCards'))
+	: props.cards
 
 	React.useEffect(() => {
 		if (pathname === '/saved-movies') {
@@ -124,13 +147,15 @@ function Movies(props) {
 			setIsSearching(true)
 		}
 		setFilteredCards(props.cards)
+		setAllSavedCards(props.cards)
 	}, [pathname])
 
+	// allCards={pathname === "/saved-cards" ? JSON.parse(localStorage.getItem('savedCards'))?.length : JSON.parse(localStorage.getItem('cards'))?.length}
 	return (
 		<div className="movies">
 			<div className="movies__container">
 			<SearchForm handleSearch={handleSearch} />
-			<MoviesCardList cards={pathname === '/saved-movies' ? savedCards : cards} isSearching={isSearching} isPreloading={isPreloading} allCards={pathname === "/saved-cards" ? JSON.parse(localStorage.getItem('savedCards'))?.length : JSON.parse(localStorage.getItem('cards'))?.length} add={props.add} delete={props.delete} savedFilms={props.savedFilms} addMore={addMore} />
+			<MoviesCardList cards={pathname === "/saved-movies" ? savedCards : cards} isSearching={isSearching} isPreloading={isPreloading} lengthFilteredCards={JSON.parse(localStorage.getItem('cards'))?.length} add={props.add} delete={props.delete} savedFilms={props.savedFilms} addMore={addMore} />
 			</div>
 		</div>
 	)

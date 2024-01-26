@@ -39,8 +39,11 @@ function Profile(props) {
 			setIsEdit(false)
 		})
 		.catch((err) => {
-			if (err === "Ошибка: 500") {
+			console.log(err)
+			if (err === 500) {
 				setError("Пользователь с указанным email уже существует")
+			} else if (err === 401) {
+				props.logOut()
 			} else {
 				setError("При обновление профиля произошла ошибка")
 			}
@@ -101,8 +104,8 @@ function Profile(props) {
 				</div>
 				{isEdit
 				? <>
-						<span className="profile__error">{isSucces ? 'Данные успешно изменены' : error}</span>
-						<button type="button" className={`profile__button-save ${isActive ? '' : 'profile__button-save_disable'}`} onClick={handleSudmit}>Сохранить</button> 
+						<span className="profile__error">{error}</span>
+						<button disabled={!isActive} type="button" className={`profile__button-save ${isActive ? '' : 'profile__button-save_disable'}`} onClick={handleSudmit}>Сохранить</button> 
 					</>
 				: <nav>
 						<ul className="profile__buttons">

@@ -5,11 +5,14 @@ export class MainApi {
 	}
 
 	_checkResponse(response) {
+		return response.ok ? response.json() : response.json().then(errData => Promise.reject(errData))
+	}
+
+	_checkResponseStatus(response) {
 		if (response.ok) {
-			console.log(response.json)
 			return response.json();
 		}
-		return Promise.reject(`Ошибка: ${response.status}`)
+		return Promise.reject(response.status);
 	}
 
 	signUp(name, email, password) {
@@ -48,7 +51,7 @@ export class MainApi {
 			method: "PATCH",
 			headers: this._getAuth(),
 			body: JSON.stringify({ name, email }),
-		}).then(this._checkResponse)
+		}).then(this._checkResponseStatus)
 	}
 
 	addSavedFilm(film) {

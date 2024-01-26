@@ -1,6 +1,6 @@
 export const DESCTOP_COUNT = 16;
 export const DESCTOP_PLUS = 4;
-export const SMALL_DESCTOP_COUNT = 9;
+export const SMALL_DESCTOP_COUNT = 12;
 export const SMALL_DESCTOP_PLUS = 3;
 export const TABLET_COUNT = 8;
 export const TABLET_PLUS = 2;

@@ -33,7 +33,7 @@ function MoviesCard(props) {
 				? <button type="button" className="card__button-close" onClick={(() => handleDelete(props.card._id))}></button>
 				: <button type="button" className={`card__button ${isLiked ? 'card__button-saved' : 'card__button-save'}`} onClick={handleLike}></button>}
 			</div>
-			<p className="card__time">{hours > 0 ? hours : ''} ч {minutes + ''} м</p>
+			<p className="card__time">{hours > 0 ? `${hours} ч` : ''} {minutes + ''} м</p>
 		</li>
 	)
 }

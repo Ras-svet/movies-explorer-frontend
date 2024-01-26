@@ -31,6 +31,8 @@ function App(){
 	const [isPopupOpen, setIsPopupOpen] = React.useState(false);
 	const [titleStatusPopup, setTitleStatusPopup] = React.useState('');
 	const [imageStatusPopup, setImageStatusPopup] = React.useState(null);
+	const [token, setToken] = React.useState('')
+	console.log(isLoggedIn)
 
 	function signUp(name, email, password) {
 		mainApi.signUp(name, email, password)
@@ -44,7 +46,7 @@ function App(){
 			console.log(err.message)
 			setIsPopupOpen(true)
 			setImageStatusPopup(badAnswer);
-			setTitleStatusPopup("Что-то пошло не так")
+			setTitleStatusPopup(err.message)
 		})
 	}
 
@@ -62,7 +64,13 @@ function App(){
 		.then(() => {
 			navigate('/movies');
 		})
-		.catch((err) => console.log(err))
+		.catch((err) => {
+			setIsLoggedIn(false)
+			console.log(err.message)
+			setIsPopupOpen(true)
+			setImageStatusPopup(badAnswer);
+			setTitleStatusPopup(err.message)
+		})
 	}
 
 	function getUserInfo() {
@@ -74,8 +82,32 @@ function App(){
 				email: user.email,
 			})
 		})
-		.catch((err) => console.log(err))
+		.catch((err) => {
+			console.log(err)
+			if (err.message === "Необходима авторизация") {
+				logOut()
+			}
+		})
 	}
+
+	// React.useEffect(() => {
+  //   const jwt = localStorage.getItem("jwt");
+  //   setToken(jwt);
+  // }, [token, setToken]);
+
+	// function checkToken() {
+	// 	if (localStorage.getItem('jwt') !== null) {
+	// 		setIsLoggedIn(true)
+	// 	} else {
+	// 		setIsLoggedIn(false)
+	// 		navigate("/")
+	// 	}
+	// }
+
+	// React.useEffect(() => {
+	// 	console.log('kdk')
+	// 	checkToken()
+	// }, [localStorage])
 
 	function logOut() {
 		setCurrentUser({
@@ -91,27 +123,34 @@ function App(){
 	function deleteSavedFilm(filmId) {
 		mainApi.deleteSavedFilm(filmId)
 		.then((res) => {
-			const newSavedFilms = savedFilms
-			.filter((savedfilm) => savedfilm._id !== filmId);
-			setSavedFilms(newSavedFilms);
+			if (localStorage.getItem('savedCards') !== null && JSON.parse(localStorage.getItem('savedCards')).length > 0) {
+				const newSavedFilms = JSON.parse(localStorage.getItem('savedCards'))
+				.filter((savedfilm) => savedfilm._id !== filmId);
+				localStorage.setItem('savedCards', JSON.stringify(newSavedFilms))
+			}
+				const newSavedFilms = savedFilms
+				.filter((savedfilm) => savedfilm._id !== filmId);
+				setSavedFilms(newSavedFilms)
 		})
-		.catch((err) => console.log(err))
+		.catch((err) => {
+			console.log(err)
+			if (err.message === "Необходима авторизация") {
+				logOut()
+			}
+		})
 	}
 
 	function addSavedFilm(film) {
 		mainApi.addSavedFilm(film)
-		.then(() => {
-			getSavedFilms()
-		})
-		.catch((err) => console.log(err))
-	}
-
-	function getAllFilms() {
-		api.getAllMovies()
 		.then((res) => {
-			setAllFilms(res)
+			setSavedFilms([...savedFilms, res])
 		})
-		.catch((err) => console.log(err))
+		.catch((err) => {
+			console.log(err)
+			if (err.message === "Необходима авторизация") {
+				logOut()
+			}
+		})
 	}
 
 	function getSavedFilms() {
@@ -119,16 +158,20 @@ function App(){
 		.then((res) => {
 			setSavedFilms(res)
 		})
-		.catch((err) => console.log(err))
+		.catch((err) => {
+			console.log(err)
+			if (err.message === "Необходима авторизация") {
+				logOut()
+			}
+		})
 	}
 
 	React.useEffect(() => {
 		if (localStorage.getItem('jwt')) {
 			getUserInfo()
-			getAllFilms()
 			getSavedFilms()
 		}
-	}, [isLoggedIn])
+	}, [isLoggedIn, token])
 
 	return (
 		<>
@@ -172,11 +215,11 @@ function App(){
 									<main className="main">
 										<ProtectedRoute
 											component={Movies}
-											cards={allFilms}
 											isLoggedIn={isLoggedIn}
 											add={addSavedFilm}
 											delete={deleteSavedFilm}
 											savedFilms={savedFilms}
+											logOut={logOut}
 										/>
 									</main>
 									<Footer />
