@@ -32,7 +32,6 @@ function App(){
 	const [titleStatusPopup, setTitleStatusPopup] = React.useState('');
 	const [imageStatusPopup, setImageStatusPopup] = React.useState(null);
 	const [token, setToken] = React.useState('')
-	console.log(isLoggedIn)
 
 	function signUp(name, email, password) {
 		mainApi.signUp(name, email, password)
