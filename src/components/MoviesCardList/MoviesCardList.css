@@ -16,6 +16,13 @@
 	justify-content: start;
 }
 
+.cards__error {
+	text-align: center;
+	color: #fff;
+	size: 18px;
+	max-width: 100%;
+}
+
 .cards {
 	display: flex;
 	flex-direction: column;

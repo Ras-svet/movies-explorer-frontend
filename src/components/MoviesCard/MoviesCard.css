@@ -6,6 +6,12 @@
 	max-width: 339px;
 }
 
+.card:hover .card__button-close {
+	background: #313131 url(../../images/button__close.svg) center no-repeat;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
 .card__image {
 	padding: 0;
 	margin: 0;
@@ -72,11 +78,11 @@
 	background-color: transparent;
 }
 
-.card__button-close:hover {
+/* .card__button-close:hover {
 	background: #313131 url(../../images/button__close.svg) center no-repeat;
 	border-radius: 50%;
 	cursor: pointer;
-}
+} */
 
 .card__time {
 	font-size: 11px;
@@ -98,6 +104,11 @@
 	}
 	.card__title {
 		max-width: 100%;
+	}
+	.card__button-close {
+		background: #313131 url(../../images/button__close.svg) center no-repeat;
+		border-radius: 50%;
+		cursor: pointer;
 	}
 }
 

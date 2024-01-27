@@ -3,8 +3,10 @@ import "./Navigation.css"
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import profileButton from "../../images/profileButton.svg"
+import { useLocation } from "react-router-dom";
 
 function Navigation(props) {
+	const {pathname} = useLocation()
 	return (
 		<div className="navigation">
 			<button type="button" className="navigation__close-button" onClick={props.onClose}></button>
@@ -13,21 +15,21 @@ function Navigation(props) {
 					<li>
 						<NavLink
 							to="/"
-							className="navigation__link">
+							className={`navigation__link ${pathname === '/' ? 'navigation__link_active' : ''}`}>
 							Главная
 						</NavLink>
 					</li>
 					<li>
 						<NavLink
 							to="/movies"
-							className="navigation__link navigation__link_active">
+							className={`navigation__link ${pathname === '/movies' ? 'navigation__link_active' : ''}`}>
 							Фильмы
 						</NavLink>
 					</li>
 					<li>
 						<NavLink
 							to="/saved-movies"
-							className="navigation__link">
+							className={`navigation__link ${pathname === '/saved-movies' ? 'navigation__link_active' : ''}`}>
 							Сохранённые фильмы
 						</NavLink>
 					</li>
